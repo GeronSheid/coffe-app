@@ -1,4 +1,4 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, HttpCode, Param, ParseIntPipe } from '@nestjs/common';
 import { DatabaseService } from './database.service';
 
 @Controller('coffee')
@@ -6,12 +6,12 @@ export class DatabaseController {
     constructor(private readonly databaseService: DatabaseService) {}
 
     @Get('all')
-    getAll() {
-        return this.databaseService.getAll();
+    getAllCofees() {
+        return this.databaseService.getAllCoffees();
     }
 
     @Get('/:id')
-    getById(@Param('id', ParseIntPipe) id: number) {
-        return this.databaseService.getById(id);
+    getCoffeeById(@Param('id', ParseIntPipe) id: number) {
+        return this.databaseService.getCoffeeById(id);
     }
 }
